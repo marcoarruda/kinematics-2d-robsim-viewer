@@ -6,7 +6,7 @@ import { ref } from "vue";
 
 const dimension = { x: 20, y: 20 };
 
-const currentStepIndex = ref<number>(0);
+const currentStepIndex = ref<number>(1);
 
 const objects = [
   {
@@ -20,7 +20,14 @@ const simulation: ISimulation = {
     dimension,
     objects,
   },
-  steps: [],
+  steps: [{ objects: [] }, { objects: [] }, { objects: [] }],
+};
+
+const prev = () => {
+  currentStepIndex.value--;
+};
+const next = () => {
+  currentStepIndex.value++;
 };
 </script>
 
@@ -29,6 +36,8 @@ const simulation: ISimulation = {
     <SimulationPlayer
       :currentStepIndex="currentStepIndex"
       :totalSteps="simulation.steps.length"
+      @prev="prev"
+      @next="next"
     />
     <SimulatorWorld :dimension="dimension" :objects="objects" />
   </main>
