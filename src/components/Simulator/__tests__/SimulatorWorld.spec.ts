@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll } from "vitest";
 
 import { mount, VueWrapper } from "@vue/test-utils";
 import SimulatorWorld from "../SimulatorWorld.vue";
-import type { IObjectWrapper } from "@/interfaces";
+import type { ISimulationObject } from "@/interfaces";
 
 describe("SimulatorWorld", () => {
   it("should create rows and columns properly", () => {
@@ -10,7 +10,7 @@ describe("SimulatorWorld", () => {
       x: 2,
       y: 5,
     };
-    const objects: Array<IObjectWrapper> = [];
+    const objects: Array<ISimulationObject> = [];
 
     const wrapper = mount(SimulatorWorld, {
       props: { dimension, objects },
@@ -25,7 +25,7 @@ describe("SimulatorWorld", () => {
   describe("object creation", () => {
     let wrapper: VueWrapper;
     let dimension: { x: number; y: number };
-    let objectWrapper: IObjectWrapper;
+    let objectWrapper: ISimulationObject;
     let objectRef: string;
 
     beforeAll(() => {
@@ -35,8 +35,7 @@ describe("SimulatorWorld", () => {
       };
       objectWrapper = {
         object: { id: "id" },
-        x: 1,
-        y: 2,
+        position: { x: 1, y: 2 },
       };
       objectRef = `object-${objectWrapper.object.id}`;
 
@@ -54,7 +53,7 @@ describe("SimulatorWorld", () => {
     });
 
     it("should create object at the right place", () => {
-      const cellRef = `row-${objectWrapper.y}-column-${objectWrapper.x}`;
+      const cellRef = `row-${objectWrapper.position.y}-column-${objectWrapper.position.x}`;
       const objectRef = `object-${objectWrapper.object.id}`;
 
       const cellWrapper = wrapper.find({ ref: cellRef });

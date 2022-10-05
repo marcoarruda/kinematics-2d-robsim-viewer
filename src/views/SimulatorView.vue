@@ -6,8 +6,7 @@ const dimension = { x: 20, y: 20 };
 const objects = [
   {
     object: { id: "" },
-    x: 5,
-    y: 15,
+    position: { x: 5, y: 15 },
   },
 ];
 </script>

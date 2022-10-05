@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import type { IObjectWrapper } from "@/interfaces";
+import type { ISimulationObject } from "@/interfaces";
 
 defineProps<{
   dimension: { x: number; y: number };
-  objects: Array<IObjectWrapper>;
+  objects: Array<ISimulationObject>;
 }>();
 
 const objectsAt = (
-  objects: IObjectWrapper[],
+  objects: ISimulationObject[],
   position: { x: number; y: number }
-): IObjectWrapper[] => {
+): ISimulationObject[] => {
   return objects.filter(
     (objectWrapper) =>
-      objectWrapper.x === position.x && objectWrapper.y === position.y
+      objectWrapper.position.x === position.x &&
+      objectWrapper.position.y === position.y
   );
 };
 </script>
@@ -74,5 +75,6 @@ div.object {
   width: 20px;
   height: 20px;
   background-color: blue;
+  border-radius: 40%;
 }
 </style>
