@@ -8,17 +8,16 @@ enum EnumSimulationControl {
 }
 
 const state = ref<EnumSimulationControl>(EnumSimulationControl.PAUSE);
-
 const pause = () => {
   state.value = EnumSimulationControl.PAUSE;
 };
-
 const play = () => {
   state.value = EnumSimulationControl.PLAY;
 };
 
 defineProps<{
-  steps: ISimulation["steps"];
+  currentStepIndex: number;
+  totalSteps: number;
 }>();
 </script>
 
@@ -33,6 +32,7 @@ defineProps<{
     >
       pause
     </button>
+    <div class="steps">{{ currentStepIndex }} / {{ totalSteps }}</div>
     <button
       class="play"
       ref="play"

@@ -2,8 +2,11 @@
 import SimulatorWorld from "../components/Simulator/SimulatorWorld.vue";
 import SimulationPlayer from "../components/Simulator/SimulationPlayer.vue";
 import type { ISimulation } from "@/interfaces";
+import { ref } from "vue";
 
 const dimension = { x: 20, y: 20 };
+
+const currentStepIndex = ref<number>(0);
 
 const objects = [
   {
@@ -23,7 +26,10 @@ const simulation: ISimulation = {
 
 <template>
   <main>
-    <SimulationPlayer :steps="simulation.steps" />
+    <SimulationPlayer
+      :currentStepIndex="currentStepIndex"
+      :steps="simulation.steps"
+    />
     <SimulatorWorld :dimension="dimension" :objects="objects" />
   </main>
 </template>

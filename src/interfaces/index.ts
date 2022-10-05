@@ -23,5 +23,5 @@ export interface ISimulationWorld {
 }
 
 export interface ISimulationStep {
-  updatedObjects: Array<ISimulationObject>;
+  objects: Array<ISimulationObject>;
 }
