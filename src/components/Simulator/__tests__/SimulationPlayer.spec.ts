@@ -35,9 +35,68 @@ describe("SimulationPlayer", () => {
     });
   });
 
-  describe("steps display", () => {
-    let wrapper: VueWrapper;
+  describe("prev and next buttons", () => {
+    describe("prev button", () => {
+      it("should be disabled if current step is 0", () => {
+        const wrapper = mount(SimulationPlayer, {
+          props: { currentStepIndex: 0, totalSteps: 10 },
+        });
+        const prevButton = wrapper.find({ ref: "prev" });
 
+        expect(prevButton.attributes().disabled).toBe("");
+      });
+      it("should be enabled if current step is higher than 0", () => {
+        const wrapper = mount(SimulationPlayer, {
+          props: { currentStepIndex: 1, totalSteps: 10 },
+        });
+        const prevButton = wrapper.find({ ref: "prev" });
+
+        expect(prevButton.attributes().disabled).toBeUndefined();
+      });
+      it("should emit 'prev' when pressed", async () => {
+        const wrapper = mount(SimulationPlayer, {
+          props: { currentStepIndex: 1, totalSteps: 10 },
+        });
+        const prevButton = wrapper.find({ ref: "prev" });
+
+        await prevButton.trigger("click");
+
+        expect(wrapper.emitted("prev")).toHaveLength(1);
+      });
+    });
+
+    describe("next button", () => {
+      it("should be disabled if current step is equal or higher than max", () => {
+        const wrapper = mount(SimulationPlayer, {
+          props: { currentStepIndex: 10, totalSteps: 10 },
+        });
+        const nextButton = wrapper.find({ ref: "next" });
+
+        expect(nextButton.attributes().disabled).toBe("");
+      });
+      it("should be enabled if current step is lower than max", () => {
+        const wrapper = mount(SimulationPlayer, {
+          props: { currentStepIndex: 1, totalSteps: 10 },
+        });
+        const nextButton = wrapper.find({ ref: "next" });
+
+        expect(nextButton.attributes().disabled).toBeUndefined();
+      });
+      it("should emit 'next' when pressed", async () => {
+        const wrapper = mount(SimulationPlayer, {
+          props: { currentStepIndex: 1, totalSteps: 10 },
+        });
+        const nextButton = wrapper.find({ ref: "next" });
+
+        await nextButton.trigger("click");
+
+        expect(wrapper.emitted("next")).toHaveLength(1);
+      });
+    });
+  });
+
+  describe("steps display", () => {
+    let wrapper: VueWrapper<any>;
     const currentStepIndex = 2,
       totalSteps = 10;
 

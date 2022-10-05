@@ -28,7 +28,7 @@ const simulation: ISimulation = {
   <main>
     <SimulationPlayer
       :currentStepIndex="currentStepIndex"
-      :steps="simulation.steps"
+      :totalSteps="simulation.steps.length"
     />
     <SimulatorWorld :dimension="dimension" :objects="objects" />
   </main>
