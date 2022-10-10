@@ -8,17 +8,9 @@ const dimension = { x: 20, y: 20 };
 
 const currentStepIndex = ref<number>(1);
 
-const objects = [
-  {
-    object: { id: "" },
-    position: { x: 5, y: 15 },
-  },
-];
-
 const simulation: ISimulation = {
   world: {
     dimension,
-    objects,
   },
   steps: [{ objects: [] }, { objects: [] }, { objects: [] }],
 };
@@ -39,6 +31,9 @@ const next = () => {
       @prev="prev"
       @next="next"
     />
-    <SimulatorWorld :dimension="dimension" :objects="objects" />
+    <SimulatorWorld
+      :dimension="dimension"
+      :objects="simulation.steps[currentStepIndex].objects"
+    />
   </main>
 </template>

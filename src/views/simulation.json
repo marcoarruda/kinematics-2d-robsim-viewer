@@ -1,0 +1,22 @@
+[
+  {
+    "objects": [
+      { "dynamic": false, "position": { "x": 1, "y": 2 } },
+      { "dynamic": false, "position": { "x": 1, "y": 3 } },
+      { "dynamic": false, "position": { "x": 1, "y": 4 } },
+      { "dynamic": false, "position": { "x": 1, "y": 5 } },
+      { "dynamic": false, "position": { "x": 1, "y": 6 } },
+      { "dynamic": false, "position": { "x": 1, "y": 7 } }
+    ]
+  },
+  {
+    "objects": [
+      { "dynamic": false, "position": { "x": 1, "y": 2 } },
+      { "dynamic": false, "position": { "x": 1, "y": 3 } },
+      { "dynamic": false, "position": { "x": 1, "y": 4 } },
+      { "dynamic": false, "position": { "x": 1, "y": 5 } },
+      { "dynamic": false, "position": { "x": 1, "y": 6 } },
+      { "dynamic": false, "position": { "x": 1, "y": 7 } }
+    ]
+  }
+]

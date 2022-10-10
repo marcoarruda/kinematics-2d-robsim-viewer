@@ -19,7 +19,6 @@ export interface ISimulation {
 
 export interface ISimulationWorld {
   dimension: IGeometry2D;
-  objects: Array<ISimulationObject>;
 }
 
 export interface ISimulationStep {
